@@ -33,8 +33,6 @@ if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
 if 'vector_store' not in st.session_state:
     st.session_state.vector_store = None
-if 'current_input' not in st.session_state:
-    st.session_state.current_input = ''
 
 ## function to load and process the website content
 def load_website(url):
@@ -59,7 +57,7 @@ def load_website(url):
 def create_chat_chain(vector_store):
     os.environ["HUGGINGFACEHUB_API_TOKEN"] = os.getenv("HUGGINGFACEHUB_API_TOKEN") 
     llm = HuggingFaceEndpoint(
-        repo_id="mistralai/Mistral-7B-Instruct-v0.1",
+        repo_id="HuggingFaceH4/zephyr-7b-beta",
         temperature=0.7,
         max_new_tokens=512,
         task="text-generation"
